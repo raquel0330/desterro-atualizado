@@ -41,67 +41,9 @@
 
     <main class="container">
 
-        <!-- INTRODUÇÃO -->
-
-        <section class="introducao">
-
-            <span class="etiqueta">PENSAMENTO CRÍTICO NA ERA DIGITAL</span>
-
-            <h2>O pensamento crítico na era digital</h2>
-
-            <p>
-                A tecnologia, as redes sociais e a inteligência artificial
-                fazem parte da rotina dos jovens. Mas será que eles conseguem
-                analisar criticamente as informações que recebem e reconhecer
-                a influência desses conteúdos em suas decisões?
-            </p>
-
-        </section>
 
 
-        <!-- INDICADORES -->
 
-        <section class="indicadores">
-
-            <article class="indicador">
-
-                <div class="icone">👥</div>
-
-                <div>
-                    <span>Participantes</span>
-                    <h3>21</h3>
-                    <small>Jovens entrevistados</small>
-                </div>
-
-            </article>
-
-
-            <article class="indicador">
-
-                <div class="icone">📱</div>
-
-                <div>
-                    <span>Influência tecnológica</span>
-                    <h3>81%</h3>
-                    <small>Reconhecem a influência da tecnologia</small>
-                </div>
-
-            </article>
-
-
-            <article class="indicador">
-
-                <div class="icone">🔎</div>
-
-                <div>
-                    <span>Verificação de fontes</span>
-                    <h3>61,9%</h3>
-                    <small>Indicaram a verificação como critério</small>
-                </div>
-
-            </article>
-
-        </section>
 
 
         <!-- TEMA -->
@@ -175,7 +117,9 @@
 
                 <div>
 
-                    <span class="etiqueta">04 — ANÁLISE DOS DADOS</span>
+                    <span class="etiqueta">
+                        04 — ANÁLISE DOS DADOS
+                    </span>
 
                     <h2>O que revelam as respostas?</h2>
 
@@ -189,37 +133,6 @@
                 <span class="respostas">
                     21 PARTICIPANTES
                 </span>
-
-            </div>
-
-
-            <!-- FILTRO DOS GRÁFICOS -->
-
-            <div class="filtro-container">
-
-                <div class="filtro-item">
-
-                    <label for="filtro">
-                        Visualizar resultados
-                    </label>
-
-                    <p>
-                        Escolha entre a distribuição completa ou os principais resultados.
-                    </p>
-
-                    <select id="filtro">
-
-                        <option value="todos">
-                            Todos os resultados
-                        </option>
-
-                        <option value="principais">
-                            Destacar principais resultados
-                        </option>
-
-                    </select>
-
-                </div>
 
             </div>
 
@@ -250,11 +163,44 @@
                     Os jovens refletem sobre as consequências de suas decisões?
                 </p>
 
+
+                <!-- FILTRO DO GRÁFICO 1 -->
+
+                <div class="filtro-container">
+
+                    <div class="filtro-item">
+
+                        <label for="filtro">
+                            Visualizar resultados
+                        </label>
+
+                        <p>
+                            Escolha entre todas as respostas ou os principais resultados.
+                        </p>
+
+                        <select id="filtro">
+
+                            <option value="todos">
+                                Todos os resultados
+                            </option>
+
+                            <option value="principais">
+                                Destacar principais resultados
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
                 <div class="grafico-area">
 
                     <canvas id="graficoDecisoes"></canvas>
 
                 </div>
+
 
                 <div class="destaque-dado">
 
@@ -266,6 +212,16 @@
                     </span>
 
                 </div>
+
+
+                <!-- JUSTIFICATIVA DO GRÁFICO 1 -->
+
+                <p class="descricao">
+                    <strong>Por que esse gráfico?</strong>
+                    O gráfico de rosca foi escolhido para mostrar a proporção
+                    das respostas e facilitar a identificação de quantos jovens
+                    refletem sobre as consequências de suas decisões.
+                </p>
 
             </article>
 
@@ -296,11 +252,45 @@
                     Quanto a tecnologia influencia as decisões dos jovens?
                 </p>
 
+
+                <!-- FILTRO DO GRÁFICO 2 -->
+
+                <div class="filtro-container">
+
+                    <div class="filtro-item">
+
+                        <label for="filtroInfluencia">
+                            Visualizar resultados
+                        </label>
+
+                        <p>
+                            Compare todas as respostas ou destaque a influência
+                            mais significativa.
+                        </p>
+
+                        <select id="filtroInfluencia">
+
+                            <option value="todos">
+                                Todos os resultados
+                            </option>
+
+                            <option value="principais">
+                                Destacar principais resultados
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
                 <div class="grafico-area">
 
                     <canvas id="graficoInfluencia"></canvas>
 
                 </div>
+
 
                 <div class="destaque-dado">
 
@@ -313,9 +303,19 @@
 
                 </div>
 
+
+                <!-- JUSTIFICATIVA DO GRÁFICO 2 -->
+
+                <p class="descricao">
+                    <strong>Por que esse gráfico?</strong>
+                    O gráfico de barras foi escolhido para comparar as respostas
+                    e identificar com facilidade o nível de influência da
+                    tecnologia nas decisões dos jovens.
+                </p>
+
             </article>
 
-
+        </section>
 
 
         <!-- CONCLUSÃO E ANÁLISE CRÍTICA DA IA -->
@@ -326,7 +326,9 @@
 
                 <div>
 
-                    <span class="etiqueta">05 — RESULTADOS FINAIS</span>
+                    <span class="etiqueta">
+                        05 — RESULTADOS FINAIS
+                    </span>
 
                     <h2>Conclusão da investigação</h2>
 
@@ -356,22 +358,16 @@
                     <h3>Conclusão final</h3>
 
                     <p>
-                        Os resultados demonstram que a tecnologia exerce
-                        influência significativa nas decisões dos jovens.
-                        Embora 81% dos participantes reconheçam essa
-                        influência, apenas 38,1% afirmam sempre pensar
-                        nas consequências de suas decisões digitais.
-                        Além disso, 61,9% indicaram a verificação de fontes
-                        e a confirmação das informações como critérios
-                        importantes para avaliar conteúdos gerados por
-                        inteligência artificial.
+                        Os resultados mostram que 81% dos jovens reconhecem
+                        a influência da tecnologia, mas apenas 38,1% afirmam
+                        sempre refletir sobre suas decisões. Assim, a hipótese
+                        foi parcialmente confirmada, evidenciando a importância
+                        do pensamento crítico no ambiente digital.
                     </p>
 
                     <div class="frase-impacto">
-
-                        Pensar antes de compartilhar também é uma forma
-                        de exercer o pensamento crítico.
-
+                        Estar conectado não significa estar consciente.
+                        A tecnologia influencia, mas você decide.
                     </div>
 
                 </article>
@@ -390,28 +386,54 @@
                     <h3>Verificação crítica da IA</h3>
 
                     <p>
-                        A análise produzida pela inteligência artificial
-                        deve ser confrontada com os dados coletados.
-                        Concordamos parcialmente com a interpretação de que
-                        os jovens reconhecem a influência da tecnologia,
-                        pois 81% dos participantes demonstraram essa
-                        percepção. Entretanto, reconhecer essa influência
-                        não significa necessariamente avaliar todos os
-                        conteúdos de forma crítica. O resultado de 38,1%
-                        que sempre refletem sobre as consequências reforça
-                        a necessidade de desenvolver o pensamento crítico.
+                        <strong>Análise da IA:</strong>
+                        Os jovens enfrentam desafios para desenvolver
+                        o pensamento crítico diante da tecnologia.
+                    </p>
+
+                    <p>
+                        <strong>Opinião da estudante:</strong>
+                        Concordamos parcialmente, pois reconhecer a influência
+                        tecnológica não significa sempre refletir sobre ela.
+                    </p>
+
+                    <p>
+                        <strong>Evidência:</strong>
+                        81% reconhecem essa influência, mas apenas 38,1%
+                        afirmam sempre refletir sobre suas decisões.
                     </p>
 
                     <div class="frase-impacto">
-
                         A inteligência artificial pode ajudar, mas o
                         pensamento crítico continua sendo humano.
-
                     </div>
 
                 </article>
 
             </div>
+
+
+            <!-- RELAÇÃO COM A HIPÓTESE -->
+
+            <article class="card-analise conclusao">
+
+                <div class="icone-analise">🔎</div>
+
+                <span class="numero-grafico">
+                    RELAÇÃO COM A HIPÓTESE
+                </span>
+
+                <h3>O que os filtros revelaram?</h3>
+
+                <p>
+                    Ao destacar os principais resultados dos dois gráficos,
+                    observamos que 81% reconhecem a influência tecnológica,
+                    enquanto apenas 38,1% afirmam sempre refletir sobre
+                    suas decisões. Essa comparação contribuiu para confirmar
+                    parcialmente a hipótese inicial.
+                </p>
+
+            </article>
 
         </section>
 
@@ -422,18 +444,17 @@
 
     <footer>
 
-        <h2>CTRL + DECIDE</h2>
+        <h2>estar conectado, não significa estar consciente.</h2>
 
         <p>
             Tecnologia, informação e pensamento crítico.
         </p>
 
         <small>
-            Projeto desenvolvido para a Maratona de Conhecimento.
+            Projeto desenvolvido para a Maratona tech.
         </small>
 
     </footer>
-
 
 </body>
 
