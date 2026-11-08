@@ -1,4 +1,3 @@
-
 /* =====================================
    CTRL + DECIDE
    IDENTIDADE VISUAL EM TONS TERROSOS
@@ -252,30 +251,42 @@ body {
 }
 
 /* =====================================
-   FILTRO
+   FILTRO INTERATIVO
 ===================================== */
 
 .filtro-container {
     background: var(--bege-escuro);
     border: 1px solid var(--borda);
     border-radius: 13px;
-    padding: 18px;
+    padding: 20px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    display: grid;
+    grid-template-columns: minmax(250px, 480px);
+    justify-content: start;
     gap: 15px;
 }
 
-.filtro-container label {
+.filtro-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filtro-item label {
     color: var(--marrom);
     font-size: 14px;
     font-weight: bold;
 }
 
-.filtro-container p {
+.filtro-item p {
     color: var(--cinza);
     font-size: 12px;
+}
+
+.filtro-item select {
+    width: 100%;
+    margin-top: 8px;
 }
 
 select {
@@ -305,7 +316,15 @@ select:focus {
     padding: 25px;
     margin-bottom: 20px;
     box-shadow: 0 4px 15px rgba(117, 67, 47, 0.05);
-    transition: transform 0.2s ease;
+
+    transition:
+        opacity 0.3s ease,
+        box-shadow 0.3s ease,
+        border 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+
+    position: relative;
 }
 
 .grafico-card:hover {
@@ -380,6 +399,82 @@ select:focus {
 }
 
 /* =====================================
+   DESTAQUE DOS RESULTADOS PRINCIPAIS
+===================================== */
+
+/* Dois gráficos principais */
+
+.grafico-card.grafico-destaque-principal {
+    border: 3px solid var(--terracota);
+
+    background: #FFF9F0;
+
+    box-shadow: 0 8px 28px rgba(117, 67, 47, 0.22);
+
+    transform: translateY(-4px);
+
+    opacity: 1;
+}
+
+/* Selo de resultado principal */
+
+.grafico-card.grafico-destaque-principal::before {
+    content: "★ RESULTADO PRINCIPAL";
+
+    display: inline-block;
+
+    width: fit-content;
+
+    background: var(--marrom);
+    color: var(--branco);
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    margin-bottom: 17px;
+}
+
+/* Gráfico complementar de IA */
+
+.grafico-card.grafico-destaque-secundario {
+    opacity: 0.70;
+
+    border: 1px dashed #C9BBAA;
+
+    box-shadow: none;
+
+    background: #F8F5F0;
+}
+
+/* Selo de resultado complementar */
+
+.grafico-card.grafico-destaque-secundario::before {
+    content: "ANÁLISE COMPLEMENTAR";
+
+    display: inline-block;
+
+    width: fit-content;
+
+    background: var(--cinza);
+    color: var(--branco);
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    margin-bottom: 17px;
+}
+
+/* =====================================
    CONCLUSÃO
 ===================================== */
 
@@ -446,112 +541,7 @@ select:focus {
 }
 
 /* =====================================
-   RODAPÉ
-===================================== */
-
-footer {
-    background: var(--marrom);
-    color: var(--branco);
-    text-align: center;
-    padding: 30px 15px;
-    margin-top: 35px;
-    border-radius: 14px;
-}
-
-footer h2 {
-    letter-spacing: 2px;
-    font-size: 20px;
-}
-
-footer p {
-    color: #F5DCC5;
-    font-size: 13px;
-}
-
-footer small {
-    display: block;
-    color: #E8C8AD;
-    font-size: 11px;
-    margin-top: 8px;
-}
-
-/* =====================================
-   RESPONSIVIDADE
-===================================== */
-
-@media (max-width: 800px) {
-
-    .indicadores {
-        grid-template-columns: 1fr;
-    }
-
-    .campos-ia {
-        grid-template-columns: 1fr;
-    }
-
-    .cabecalho-secao {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 550px) {
-
-    .topo {
-        padding: 18px 5%;
-        flex-wrap: wrap;
-    }
-
-    .marca h1 {
-        font-size: 17px;
-    }
-
-    .selo {
-        font-size: 9px;
-    }
-
-    .container {
-        width: 92%;
-        margin: 23px auto;
-    }
-
-    .bloco-investigacao,
-    .grafico-card,
-    .conclusao,
-    .analise-ia {
-        padding: 18px;
-    }
-
-    .texto-destaque {
-        padding-left: 0;
-    }
-
-    .filtro-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    select {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .grafico-cabecalho {
-        flex-direction: column;
-    }
-
-    .grafico-area {
-        height: 270px;
-    }
-
-    .destaque-dado {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 3px;
-    }
-}
-/* =====================================
-   NOVOS BLOCOS: CONCLUSÃO E IA
+   CONCLUSÃO E ANÁLISE CRÍTICA
 ===================================== */
 
 .secao-final {
@@ -617,11 +607,189 @@ footer small {
 }
 
 /* =====================================
-   RESPONSIVIDADE DOS NOVOS BLOCOS
+   RODAPÉ
+===================================== */
+
+footer {
+    background: var(--marrom);
+    color: var(--branco);
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 35px;
+    border-radius: 14px;
+}
+
+footer h2 {
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+footer p {
+    color: #F5DCC5;
+    font-size: 13px;
+}
+
+footer small {
+    display: block;
+    color: #E8C8AD;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+/* =====================================
+   RESPONSIVIDADE
 ===================================== */
 
 @media (max-width: 800px) {
+
+    .indicadores {
+        grid-template-columns: 1fr;
+    }
+
+    .campos-ia {
+        grid-template-columns: 1fr;
+    }
+
     .cards-analise {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho-secao {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .grafico-card.grafico-destaque-principal {
+        transform: none;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .filtro-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .topo {
+        padding: 18px 5%;
+        flex-wrap: wrap;
+    }
+
+    .marca h1 {
+        font-size: 17px;
+    }
+
+    .selo {
+        font-size: 9px;
+    }
+
+    .container {
+        width: 92%;
+        margin: 23px auto;
+    }
+
+    .bloco-investigacao,
+    .grafico-card,
+    .conclusao,
+    .analise-ia,
+    .card-analise {
+        padding: 18px;
+    }
+
+    .texto-destaque {
+        padding-left: 0;
+    }
+
+    .filtro-container {
+        grid-template-columns: 1fr;
+    }
+
+    select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .grafico-cabecalho {
+        flex-direction: column;
+    }
+
+    .grafico-area {
+        height: 270px;
+    }
+
+    .destaque-dado {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+}
+
+/* =====================================
+   PAINEL DE DESTAQUE DOS RESULTADOS
+===================================== */
+
+.resumo-resultados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+    animation: aparecer 0.4s ease;
+}
+
+.resumo-resultados[hidden] {
+    display: none !important;
+}
+
+.resultado-destaque {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-left: 5px solid var(--terracota);
+    border-radius: 14px;
+    padding: 23px;
+    box-shadow: 0 5px 16px rgba(117, 67, 47, 0.08);
+    text-align: center;
+}
+
+.resultado-destaque span {
+    display: block;
+    color: var(--cinza);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.resultado-destaque strong {
+    display: block;
+    color: var(--marrom);
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.resultado-destaque p {
+    color: var(--texto);
+    font-size: 12px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 800px) {
+    .resumo-resultados {
         grid-template-columns: 1fr;
     }
 }

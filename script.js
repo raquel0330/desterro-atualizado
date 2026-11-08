@@ -1,260 +1,554 @@
-
-// =====================================
+// ==========================================
 // CTRL + DECIDE
-// DASHBOARD DE INVESTIGAÇÃO
-// =====================================
+// DASHBOARD INTERATIVO
+// ==========================================
 
-// Total de participantes
+
+// ==========================================
+// TOTAL DE PARTICIPANTES
+// ==========================================
+
 const totalParticipantes = 21;
 
-// Paleta de cores
+
+// ==========================================
+// PALETA DE CORES
+// ==========================================
+
 const cores = {
+
     marrom: "#75432F",
     terracota: "#B86A35",
     laranja: "#D9904C",
     dourado: "#E9B66B",
     oliva: "#71804C",
-    olivaClaro: "#A8B58A"
+    bege: "#F4E4D0"
+
 };
 
-// Configuração geral dos gráficos
+
+// ==========================================
+// CONFIGURAÇÃO GERAL DOS GRÁFICOS
+// ==========================================
+
 const configuracaoGeral = {
+
     responsive: true,
+
     maintainAspectRatio: false,
 
     plugins: {
+
         legend: {
+
             position: "bottom",
 
             labels: {
+
+                color: "#44372F",
+
                 padding: 18,
-                usePointStyle: true,
 
                 font: {
-                    size: 11
+                    family: "Arial",
+                    size: 12
                 }
+
             }
+
         },
 
         tooltip: {
+
             callbacks: {
+
                 label: function(context) {
-                    const quantidade = context.raw;
+
+                    const valor = context.raw;
 
                     const percentual = (
-                        quantidade / totalParticipantes * 100
+                        valor / totalParticipantes * 100
                     ).toFixed(1);
 
-                    return `${context.label}: ${quantidade} participantes (${percentual}%)`;
+                    return `${context.label}: ${valor} participantes (${percentual}%)`;
+
                 }
+
             }
+
         }
+
     }
+
 };
 
-// =====================================
-// GRÁFICO 1
-// CONSCIÊNCIA SOBRE DECISÕES DIGITAIS
-// =====================================
 
-const graficoDecisoes = new Chart(
-    document.getElementById("graficoDecisoes"),
-    {
+// ==========================================
+// DADOS COMPLETOS ORIGINAIS
+// ==========================================
+
+const dadosOriginais = {
+
+    decisoes: {
+
+        labels: [
+            "Sempre",
+            "Frequentemente",
+            "Às vezes",
+            "Raramente"
+        ],
+
+        valores: [8, 6, 6, 1],
+
+        cores: [
+            cores.marrom,
+            cores.terracota,
+            cores.laranja,
+            cores.dourado
+        ]
+
+    },
+
+
+    influencia: {
+
+        labels: [
+            "Influencia muito",
+            "Influencia bastante",
+            "Influencia pouco",
+            "Depende da situação"
+        ],
+
+        valores: [9, 8, 1, 3],
+
+        cores: [
+            cores.marrom,
+            cores.terracota,
+            cores.dourado,
+            cores.oliva
+        ]
+
+    },
+
+
+    ia: {
+
+        labels: [
+            "Verificar fontes",
+            "Observar a aparência",
+            "Confiar em quem compartilhou",
+            "Procurar sinais de manipulação",
+            "Não consegue identificar"
+        ],
+
+        valores: [13, 5, 1, 2, 0],
+
+        cores: [
+            cores.marrom,
+            cores.terracota,
+            cores.laranja,
+            cores.dourado,
+            cores.oliva
+        ]
+
+    }
+
+};
+
+
+// ==========================================
+// DADOS DOS PRINCIPAIS RESULTADOS
+// ==========================================
+
+const dadosPrincipais = {
+
+    decisoes: {
+
+        labels: [
+            "Sempre — 38,1%",
+            "Demais respostas — 61,9%"
+        ],
+
+        valores: [8, 13],
+
+        cores: [
+            cores.marrom,
+            cores.bege
+        ]
+
+    },
+
+
+    influencia: {
+
+        labels: [
+            "Influencia muito ou bastante — 81%",
+            "Demais respostas — 19%"
+        ],
+
+        valores: [17, 4],
+
+        cores: [
+            cores.terracota,
+            cores.bege
+        ]
+
+    },
+
+
+    ia: {
+
+        labels: [
+            "Verificar fontes — 61,9%",
+            "Demais respostas — 38,1%"
+        ],
+
+        valores: [13, 8],
+
+        cores: [
+            cores.oliva,
+            cores.bege
+        ]
+
+    }
+
+};
+
+
+// ==========================================
+// VARIÁVEIS DOS TRÊS GRÁFICOS
+// ==========================================
+
+let graficoDecisoes = null;
+
+let graficoInfluencia = null;
+
+let graficoIA = null;
+
+
+// ==========================================
+// GRÁFICO 1
+// PENSAMENTO ANTES DAS DECISÕES
+// ==========================================
+
+const elementoDecisoes = document.getElementById("graficoDecisoes");
+
+if (elementoDecisoes) {
+
+    graficoDecisoes = new Chart(elementoDecisoes, {
+
         type: "doughnut",
 
         data: {
-            labels: [
-                "Sempre",
-                "Frequentemente",
-                "Às vezes",
-                "Raramente"
-            ],
+
+            labels: dadosOriginais.decisoes.labels,
 
             datasets: [{
-                label: "Participantes",
 
-                data: [8, 6, 6, 1],
+                data: dadosOriginais.decisoes.valores,
 
-                backgroundColor: [
-                    cores.terracota,
-                    cores.dourado,
-                    cores.laranja,
-                    cores.oliva
-                ],
+                backgroundColor: dadosOriginais.decisoes.cores,
 
                 borderColor: "#FFFFFF",
+
                 borderWidth: 3,
 
-                hoverOffset: 8
+                hoverOffset: 10
+
             }]
+
         },
 
         options: {
+
             ...configuracaoGeral,
 
-            cutout: "55%"
-        }
-    }
-);
-
-// =====================================
-// GRÁFICO 2
-// INFLUÊNCIA DA TECNOLOGIA
-// =====================================
-
-const graficoInfluencia = new Chart(
-    document.getElementById("graficoInfluencia"),
-    {
-        type: "bar",
-
-        data: {
-            labels: [
-                "Influencia muito",
-                "Influencia bastante",
-                "Influencia pouco",
-                "Depende da situação"
-            ],
-
-            datasets: [{
-                label: "Participantes",
-
-                data: [9, 8, 1, 3],
-
-                backgroundColor: [
-                    cores.terracota,
-                    cores.dourado,
-                    cores.laranja,
-                    cores.oliva
-                ],
-
-                borderRadius: 8,
-                borderSkipped: false
-            }]
-        },
-
-        options: {
-            ...configuracaoGeral,
-
-            indexAxis: "y",
-
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    max: 10,
-
-                    ticks: {
-                        stepSize: 2
-                    },
-
-                    grid: {
-                        color: "#EFE7DC"
-                    }
-                },
-
-                y: {
-                    grid: {
-                        display: false
-                    }
-                }
-            },
-
-            plugins: {
-                ...configuracaoGeral.plugins,
-
-                legend: {
-                    display: false
-                }
-            }
-        }
-    }
-);
-
-// =====================================
-// GRÁFICO 3
-// CONTEÚDOS GERADOS POR IA
-// =====================================
-
-const graficoIA = new Chart(
-    document.getElementById("graficoIA"),
-    {
-        type: "pie",
-
-        data: {
-            labels: [
-                "Verificar fontes",
-                "Observar a aparência",
-                "Confiar em quem compartilhou",
-                "Procurar sinais de manipulação",
-                "Não consegue identificar"
-            ],
-
-            datasets: [{
-                label: "Participantes",
-
-                data: [13, 5, 1, 2, 0],
-
-                backgroundColor: [
-                    cores.terracota,
-                    cores.dourado,
-                    cores.laranja,
-                    cores.oliva,
-                    cores.olivaClaro
-                ],
-
-                borderColor: "#FFFFFF",
-                borderWidth: 3,
-
-                hoverOffset: 8
-            }]
-        },
-
-        options: configuracaoGeral
-    }
-);
-
-// =====================================
-// FILTRO INTERATIVO
-// =====================================
-
-const filtro = document.getElementById("filtro");
-
-const cartoes = document.querySelectorAll(".grafico-card");
-
-filtro.addEventListener("change", function() {
-
-    const categoriaSelecionada = filtro.value;
-
-    cartoes.forEach(function(cartao) {
-
-        const categoria = cartao.dataset.grafico;
-
-        if (
-            categoriaSelecionada === "todos" ||
-            categoriaSelecionada === categoria
-        ) {
-
-            cartao.classList.remove("oculto");
-
-        } else {
-
-            cartao.classList.add("oculto");
+            cutout: "58%"
 
         }
 
     });
 
-});
+}
 
-// =====================================
-// INFORMAÇÕES NO CONSOLE
-// =====================================
 
-console.log("CTRL + DECIDE iniciado!");
+// ==========================================
+// GRÁFICO 2
+// INFLUÊNCIA DA TECNOLOGIA
+// ==========================================
+
+const elementoInfluencia = document.getElementById("graficoInfluencia");
+
+if (elementoInfluencia) {
+
+    graficoInfluencia = new Chart(elementoInfluencia, {
+
+        type: "bar",
+
+        data: {
+
+            labels: dadosOriginais.influencia.labels,
+
+            datasets: [{
+
+                label: "Participantes",
+
+                data: dadosOriginais.influencia.valores,
+
+                backgroundColor: dadosOriginais.influencia.cores,
+
+                borderRadius: 8,
+
+                borderSkipped: false
+
+            }]
+
+        },
+
+        options: {
+
+            ...configuracaoGeral,
+
+            indexAxis: "y",
+
+            scales: {
+
+                x: {
+
+                    beginAtZero: true,
+
+                    max: totalParticipantes,
+
+                    ticks: {
+                        stepSize: 3,
+                        color: "#44372F"
+                    },
+
+                    grid: {
+                        color: "#E9DCCB"
+                    }
+
+                },
+
+                y: {
+
+                    ticks: {
+                        color: "#44372F"
+                    },
+
+                    grid: {
+                        display: false
+                    }
+
+                }
+
+            },
+
+            plugins: {
+
+                ...configuracaoGeral.plugins,
+
+                legend: {
+                    display: false
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+// ==========================================
+// GRÁFICO 3
+// CONFIABILIDADE DOS CONTEÚDOS DE IA
+// ==========================================
+
+const elementoIA = document.getElementById("graficoIA");
+
+if (elementoIA) {
+
+    graficoIA = new Chart(elementoIA, {
+
+        type: "pie",
+
+        data: {
+
+            labels: dadosOriginais.ia.labels,
+
+            datasets: [{
+
+                data: dadosOriginais.ia.valores,
+
+                backgroundColor: dadosOriginais.ia.cores,
+
+                borderColor: "#FFFFFF",
+
+                borderWidth: 3,
+
+                hoverOffset: 10
+
+            }]
+
+        },
+
+        options: {
+
+            ...configuracaoGeral
+
+        }
+
+    });
+
+}
+
+
+// ==========================================
+// FUNÇÃO PARA ATUALIZAR OS GRÁFICOS
+// ==========================================
+
+function atualizarGrafico(grafico, dados) {
+
+    if (!grafico) {
+        return;
+    }
+
+    grafico.data.labels = [...dados.labels];
+
+    grafico.data.datasets[0].data = [...dados.valores];
+
+    grafico.data.datasets[0].backgroundColor = [...dados.cores];
+
+    grafico.update();
+
+}
+
+
+// ==========================================
+// FUNÇÃO PARA MOSTRAR TODOS OS RESULTADOS
+// ==========================================
+
+function mostrarTodosResultados() {
+
+    atualizarGrafico(
+        graficoDecisoes,
+        dadosOriginais.decisoes
+    );
+
+    atualizarGrafico(
+        graficoInfluencia,
+        dadosOriginais.influencia
+    );
+
+    atualizarGrafico(
+        graficoIA,
+        dadosOriginais.ia
+    );
+
+    // Restaura o limite original do gráfico de influência
+
+    if (graficoInfluencia) {
+
+        graficoInfluencia.options.scales.x.max = totalParticipantes;
+
+        graficoInfluencia.update();
+
+    }
+
+}
+
+
+// ==========================================
+// FUNÇÃO PARA DESTACAR OS PRINCIPAIS RESULTADOS
+// ==========================================
+
+function destacarPrincipaisResultados() {
+
+    // GRÁFICO 1:
+    // SOMENTE "SEMPRE" E AS DEMAIS RESPOSTAS AGRUPADAS
+
+    atualizarGrafico(
+        graficoDecisoes,
+        dadosPrincipais.decisoes
+    );
+
+
+    // GRÁFICO 2:
+    // AGRUPA "INFLUENCIA MUITO" E "INFLUENCIA BASTANTE"
+
+    atualizarGrafico(
+        graficoInfluencia,
+        dadosPrincipais.influencia
+    );
+
+
+    // Ajusta o eixo do gráfico horizontal
+
+    if (graficoInfluencia) {
+
+        graficoInfluencia.options.scales.x.max = totalParticipantes;
+
+        graficoInfluencia.update();
+
+    }
+
+
+    // GRÁFICO 3:
+    // SOMENTE "VERIFICAR FONTES" E AS DEMAIS RESPOSTAS AGRUPADAS
+
+    atualizarGrafico(
+        graficoIA,
+        dadosPrincipais.ia
+    );
+
+}
+
+
+// ==========================================
+// FILTRO INTERATIVO DOS GRÁFICOS
+// ==========================================
+
+const filtro = document.getElementById("filtro");
+
+if (filtro) {
+
+    filtro.addEventListener("change", function() {
+
+        const opcaoSelecionada = filtro.value;
+
+
+        if (opcaoSelecionada === "todos") {
+
+            mostrarTodosResultados();
+
+            console.log("Exibindo todas as respostas.");
+
+        }
+
+
+        else if (opcaoSelecionada === "principais") {
+
+            destacarPrincipaisResultados();
+
+            console.log("Exibindo somente os principais resultados.");
+
+        }
+
+    });
+
+}
+
+
+// ==========================================
+// MENSAGEM NO CONSOLE
+// ==========================================
+
+console.log("CTRL + DECIDE carregado com sucesso!");
 
 console.log("Participantes:", totalParticipantes);
 
-console.log("Gráfico 1: Consciência digital");
-console.log("Gráfico 2: Influência tecnológica");
-console.log("Gráfico 3: Conteúdos gerados por IA");
+console.log("Os três gráficos foram inicializados.");
 
-console.log("Filtro interativo ativado.");
+console.log("Filtro de gráficos interativo preparado.");

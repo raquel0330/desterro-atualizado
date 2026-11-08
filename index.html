@@ -15,9 +15,7 @@
 
 <body>
 
-    <!-- =====================================
-         CABEÇALHO
-    ====================================== -->
+    <!-- CABEÇALHO -->
 
     <header class="topo">
 
@@ -43,9 +41,7 @@
 
     <main class="container">
 
-        <!-- =====================================
-             INTRODUÇÃO
-        ====================================== -->
+        <!-- INTRODUÇÃO -->
 
         <section class="introducao">
 
@@ -63,9 +59,7 @@
         </section>
 
 
-        <!-- =====================================
-             INDICADORES
-        ====================================== -->
+        <!-- INDICADORES -->
 
         <section class="indicadores">
 
@@ -110,9 +104,7 @@
         </section>
 
 
-        <!-- =====================================
-             TEMA
-        ====================================== -->
+        <!-- TEMA -->
 
         <section class="bloco-investigacao">
 
@@ -132,9 +124,7 @@
         </section>
 
 
-        <!-- =====================================
-             PERGUNTA DE PESQUISA
-        ====================================== -->
+        <!-- PERGUNTA -->
 
         <section class="bloco-investigacao">
 
@@ -154,9 +144,7 @@
         </section>
 
 
-        <!-- =====================================
-             HIPÓTESE
-        ====================================== -->
+        <!-- HIPÓTESE -->
 
         <section class="bloco-investigacao">
 
@@ -179,9 +167,7 @@
         </section>
 
 
-        <!-- =====================================
-             DASHBOARD
-        ====================================== -->
+        <!-- DASHBOARD -->
 
         <section class="secao-dashboard">
 
@@ -207,46 +193,38 @@
             </div>
 
 
-            <!-- FILTRO INTERATIVO -->
+            <!-- FILTRO DOS GRÁFICOS -->
 
             <div class="filtro-container">
 
-                <div>
+                <div class="filtro-item">
 
-                    <label for="filtro">Filtrar análise</label>
+                    <label for="filtro">
+                        Visualizar resultados
+                    </label>
 
                     <p>
-                        Selecione uma dimensão da pesquisa.
+                        Escolha entre a distribuição completa ou os principais resultados.
                     </p>
 
+                    <select id="filtro">
+
+                        <option value="todos">
+                            Todos os resultados
+                        </option>
+
+                        <option value="principais">
+                            Destacar principais resultados
+                        </option>
+
+                    </select>
+
                 </div>
-
-                <select id="filtro">
-
-                    <option value="todos">
-                        Todas as análises
-                    </option>
-
-                    <option value="decisoes">
-                        Pensamento e decisões
-                    </option>
-
-                    <option value="influencia">
-                        Influência tecnológica
-                    </option>
-
-                    <option value="ia">
-                        Inteligência artificial
-                    </option>
-
-                </select>
 
             </div>
 
 
-            <!-- =====================================
-                 GRÁFICO 1
-            ====================================== -->
+            <!-- GRÁFICO 1 -->
 
             <article class="grafico-card" data-grafico="decisoes">
 
@@ -292,9 +270,7 @@
             </article>
 
 
-            <!-- =====================================
-                 GRÁFICO 2
-            ====================================== -->
+            <!-- GRÁFICO 2 -->
 
             <article class="grafico-card" data-grafico="influencia">
 
@@ -340,60 +316,9 @@
             </article>
 
 
-            <!-- =====================================
-                 GRÁFICO 3
-            ====================================== -->
-
-            <article class="grafico-card" data-grafico="ia">
-
-                <div class="grafico-cabecalho">
-
-                    <div>
-
-                        <span class="numero-grafico">
-                            ANÁLISE 03
-                        </span>
-
-                        <h3>Confiabilidade dos conteúdos de IA</h3>
-
-                    </div>
-
-                    <span class="tag-respostas">
-                        21 respostas
-                    </span>
-
-                </div>
-
-                <p class="descricao">
-                    Qual critério os jovens utilizam para avaliar
-                    informações geradas por inteligência artificial?
-                </p>
-
-                <div class="grafico-area">
-
-                    <canvas id="graficoIA"></canvas>
-
-                </div>
-
-                <div class="destaque-dado">
-
-                    <strong>61,9%</strong>
-
-                    <span>
-                        indicaram a verificação das fontes e a confirmação
-                        das informações como critérios de avaliação.
-                    </span>
-
-                </div>
-
-            </article>
-
-        </section>
 
 
-        <!-- =====================================
-             CONCLUSÃO E ANÁLISE CRÍTICA DA IA
-        ====================================== -->
+        <!-- CONCLUSÃO E ANÁLISE CRÍTICA DA IA -->
 
         <section class="secao-final">
 
@@ -452,7 +377,7 @@
                 </article>
 
 
-                <!-- VERIFICAÇÃO CRÍTICA DA IA -->
+                <!-- ANÁLISE CRÍTICA DA IA -->
 
                 <article class="card-analise verificacao">
 
@@ -493,9 +418,7 @@
     </main>
 
 
-    <!-- =====================================
-         RODAPÉ
-    ====================================== -->
+    <!-- RODAPÉ -->
 
     <footer>
 
